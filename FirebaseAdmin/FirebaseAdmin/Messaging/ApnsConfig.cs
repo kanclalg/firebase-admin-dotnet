@@ -29,6 +29,12 @@ namespace FirebaseAdmin.Messaging
         private ApnsPayload payload = new ApnsPayload();
 
         /// <summary>
+        /// Gets or sets the registration token of the device to which the message should be sent.
+        /// </summary>
+        [JsonProperty("live_activity_token")]
+        public string LiveActivityToken { get; set; }
+
+        /// <summary>
         /// Gets or sets the APNs headers.
         /// </summary>
         [JsonProperty("headers")]
@@ -108,6 +114,7 @@ namespace FirebaseAdmin.Messaging
                 Headers = this.Headers?.Copy(),
                 Payload = this.Payload.CopyAndValidate(),
                 FcmOptions = this.FcmOptions?.CopyAndValidate(),
+                LiveActivityToken = this.LiveActivityToken,
             };
             return copy;
         }
